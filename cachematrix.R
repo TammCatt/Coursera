@@ -1,11 +1,11 @@
 
 makeCacheMatrix <- function(x = matrix()) {
-  m<-NULL
-  set<-function(y){
-  x<<-y
-  m<<-NULL
-}
-get<-function() x
+  m <- NULL               
+  set <- function(y){
+     x <<- y             #assign input arg to x in parent environment
+     m <<- NULL          #clears cache
+  }
+get<-function() x        #uses lex scop, retrieves x from parent
 setmatrix<-function(solve) m<<- solve
 getmatrix<-function() m
 list(set=set, get=get,
@@ -24,3 +24,6 @@ cacheSolve <- function(x=matrix(), ...) {
     x$setmatrix(m)
     m
 }
+
+
+
